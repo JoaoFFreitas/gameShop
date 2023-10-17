@@ -8,7 +8,7 @@
     <meta name="author" content="João Freitas">
     <title>GameShop</title>
 </head>
-<h1>ola</h1>
+
 
 <body>
 
