@@ -34,3 +34,8 @@ a{
 .item{
     list-style-type: none;
 }
+
+.gameTable{
+  margin: auto;
+  
+}

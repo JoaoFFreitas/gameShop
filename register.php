@@ -1,10 +1,3 @@
-<?php
-session_start();
-$nomedeutilizador = $_SESSION["nome_utilizador"];
-if (empty($nomedeutilizador)) {
-    $nomedeutilizador = "Área Pessoal";
-};
-?>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -42,7 +35,7 @@ if (empty($nomedeutilizador)) {
                     } else if (empty($_SESSION["utilizador"])) {
                     ?>
                         <li class="item">
-                            <a href="#">Login</a>
+                            <a href="login.php">Login</a>
                         </li>
                     <?php
                     }
@@ -72,49 +65,21 @@ if (empty($nomedeutilizador)) {
 
     <br><br><br><br><br><br><br><br>
 
-    <?php
-    if (empty($_SESSION["utilizador"])) {
-    ?>
-        <div style="padding-top: 150px;">
-            <form action="login.php" class="contactForm" method="POST">
+    <form action="registerData.php" class="regForm" method="POST" style="margin-top: 150px;">
+        Nome<span class="marca">*</span> <input type="text" id="nome" name="nome" placeholder="O seu nome" required> <br>
+        NickName<span class="marca">*</span> <input type="text" id="nickname" name="nickname" placeholder="O seu NickName" required> <br>
+        Telemóvel<span class="marca">*</span> <input type="text" id="telemovel" name="telemovel" placeholder="O seu contacto" required> <br>
+        E-mail<span class="marca">*</span> <input type="email" name="email" id="email" placeholder="O seu e-mail" required> <br>
+        Morada<span class="marca">*</span> <input type="text" id="morada" name="morada" placeholder="A sua morada" required> <br>
+        Código Postal<span class="marca">*</span> <input type="text" id="postal" name="postal" placeholder="Código Postal" required> <br>
+        Cidade<span class="marca">*</span> <input type="text" id="cidade" name="cidade" placeholder="A sua cidade" required> <br>
+        País<span class="marca">*</span> <input type="text" id="pais" name="pais" placeholder="O seu país" required> <br>
+        Password<span class="marca">*</span> <input type="password" id="password" name="password" placeholder="Password" required> <br>
+        <input id="button" type="submit" value="Registar" style="margin-top: 20px;"> <br>
+        <p id="obrigatorio">(Todos os campos marcados com <span class="marca">*</span> são de preenchimento obrigatório)
+        </p>
 
-                Utilizador<span class="marca">*</span> <input type="text" id="lUser" name="lUser" placeholder="Nome de utilizador" required> <br>
-                Password<span class="marca">*</span> <input type="password" id="lPassword" name="lPassword" placeholder="password" required> <br>
-                <p>Se ainda não está registado registe-se <a href="register.php" Style="color: blue; text-decoration: underline;">aqui.</a></p>
-                <input id="button" type="submit" value="Login"> <br>
-                <p id="obrigatorio">(Todos os campos marcados com <span class="marca">*</span> são de preenchimento obrigatório)
-                </p>
-
-            </form>
-        </div>
-
-        </div>
-        <div>
-            <form action="insertGame.php" class="insertGame admin" method="post">
-                <h3 style="margin:auto;">Submeter Jogo</h3>
-                <div class="contentWrapper">
-                    <form action="portfolioData.php" method="post" enctype="multipart/form-data">
-                        <h3>Inserir imagem</h3>
-                        <label for="">Título da imagem:</label>
-                        <input type="text" name="title" id="title" placeholder="Insira um título..."> <br>
-                        <input type="file" name="ficheiro" size="35"> <br>
-                        <button type="submit" name="enviar">Submeter Ficheiro</button>
-                        <input type="hidden" name="acc" value="submeter">
-                </div>
-                <label for="">Título:</label>
-                <input type="text" name="gameName" id="gameName" placeholder="Insira o Nome do jogo">
-                <label for="">Conteúdo:</label>
-                <textarea name="newsContent" id="newsContent" cols="30" rows="10" maxlength="500" placeholder="Inserir conteúdo da notícia"></textarea>
-                <input id="button" type="submit" name="submit" value="Submeter" style="margin-top: 20px;"> <br>
-            </form>
-        </div>
-    <?php
-    }
-    ?>
-
-
-
-
+    </form>
 
 
 

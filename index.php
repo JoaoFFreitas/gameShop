@@ -17,10 +17,10 @@
       <div id="navbarNav">
         <ul class="header">
           <li class="item">
-            <a aria-current="page" href="#"><img src="images/gameshop-edit.png" alt="logo"></a>
+            <a aria-current="page" href="index.php"><img src="images/gameshop-edit.png" alt="logo"></a>
           </li>
           <li class="item">
-            <a href="#">Jogos</a>
+            <a href="jogos.php">Jogos</a>
           </li>
           <li class="item">
             <a href="#">Consolas</a>
@@ -29,7 +29,7 @@
           if ($_SESSION["nivel_utilizador"] === "admin") {
           ?>
             <li class="item">
-              <a href="administrador.php">Administrador</a>
+              <a href="admin.php">Administrador</a>
             </li>
           <?php
           } else if (empty($_SESSION["utilizador"])) {
