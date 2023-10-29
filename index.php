@@ -65,7 +65,7 @@
 
   <br><br><br><br><br><br><br><br>
   <h1>Carrossel de imagens <i class="fa-solid fa-cart-shopping"></i></h1>
-  <h1>hello worl</h1>
+
 
 
 
