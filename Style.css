@@ -1,24 +1,17 @@
 :root {
     --blue: #1e90ff;
     --white: #ffffff;
-    --header-height: 50px;
+    --header-height: 100px;
     --body-height: 10px;
   }
 *{
+  box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: Arial;
    
 }
-html, body{
-    height: 100%;
-}
-body{
-    box-sizing: border-box;
-    background-image: url(images/background.jpeg);
-    background-repeat: repeat-y;
-    background-size:cover;
-}
+
 a{
     text-decoration: none;
     color: white;
@@ -27,8 +20,7 @@ a{
 .header{
     display: flex;
     flex-direction: row;
-    justify-content: right;
-    gap: 20px;
+    justify-content:space-evenly;
     position: fixed;
     width: 100%;
     background-color: var(--blue);
@@ -39,6 +31,6 @@ a{
     
 }
 
-.nav-item{
+.item{
     list-style-type: none;
 }
