@@ -1,3 +1,23 @@
+<?php
+$hostname = 'localhost';
+$username = 'root';
+$password = 'root';
+$dbname = 'gameShop';
+
+$conn = @mysqli_connect($hostname, $username, $password, $dbname);
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+} else {
+};
+
+session_start();
+$nomedeutilizador = $_SESSION["nome_utilizador"];
+if (empty($nomedeutilizador)) {
+  $nomedeutilizador = "Área Pessoal";
+};
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -35,7 +55,7 @@
           } else if (empty($_SESSION["utilizador"])) {
           ?>
             <li class="item">
-              <a href="#">Login</a>
+              <a href="login.php">Login</a>
             </li>
           <?php
           }
@@ -47,10 +67,10 @@
               <a href="#"><?php echo $nomedeutilizador; ?></a>
             </li>
             <li class="item">
-              <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+              <a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a>
             </li>
             <li class="item">
-              <a href="#">Logout</a>
+              <a href="logout.php">Logout</a>
             </li>
           <?php
           }
@@ -65,6 +85,7 @@
 
   <br><br><br><br><br><br><br><br>
   <h1>Carrossel de imagens <i class="fa-solid fa-cart-shopping"></i></h1>
+  <?php echo $_SESSION["nome_utilizador"] ?>
 
 
 

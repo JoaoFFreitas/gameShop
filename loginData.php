@@ -27,12 +27,12 @@ if ($resultado->num_rows == 1) {
 if (password_verify($userPassword, $row["palavraChave"])) {
     session_start();
     $_SESSION["utilizador"] = $row["id"];
-    $_SESSION["nome_utilizador"] = $row["utilizadores"];
+    $_SESSION["nome_utilizador"] = $row["nickname"];
     $_SESSION["nivel_utilizador"] = $row["nivel"];
-    header("Location: principal.php");
+    header("Location: index.php");
 
     exit();
 } else {
-    header("Location: index.php");
+    header("Location: login.php");
 }
 $conn->close();
