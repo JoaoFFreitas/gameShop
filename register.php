@@ -12,54 +12,53 @@
 </head>
 
 <body>
-    <nav>
-        <div>
-            <div id="navbarNav">
-                <ul class="header">
-                    <li class="item">
-                        <a aria-current="page" href="index.php"><img src="images/gameshop-edit.png" alt="logo"></a>
-                    </li>
-                    <li class="item">
-                        <a href="jogos.php">Jogos</a>
-                    </li>
-                    <li class="item">
-                        <a href="#">Consolas</a>
-                    </li>
-                    <?php
-                    if ($_SESSION["nivel_utilizador"] === "admin") {
-                    ?>
-                        <li class="item">
-                            <a href="admin.php">Administrador</a>
+    <header class="sticky-top mt-50">
+        <nav>
+            <div">
+                <div id="navbarNavGS">
+                    <ul class="headerGS">
+                        <li class="itemGS">
+                            <a aria-current="page" href="index.php"><img src="images/gameshop-edit.png" alt="logo"></a>
                         </li>
-                    <?php
-                    } else if (empty($_SESSION["utilizador"])) {
-                    ?>
-                        <li class="item">
-                            <a href="login.php">Login</a>
+                        <li class="itemGS">
+                            <a href="jogos.php">Jogos</a>
                         </li>
-                    <?php
-                    }
-                    ?>
-                    <?php
-                    if (!empty($_SESSION["utilizador"])) {
-                    ?>
-                        <li class="item">
-                            <a href="#"><?php echo $nomedeutilizador; ?></a>
-                        </li>
-                        <li class="item">
-                            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-                        </li>
-                        <li class="item">
-                            <a href="#">Logout</a>
-                        </li>
-                    <?php
-                    }
-                    ?>
+                        <?php
+                        if ($_SESSION["nivel_utilizador"] === "admin") {
+                        ?>
+                            <li class="itemGS">
+                                <a href="admin.php">Administrador</a>
+                            </li>
+                        <?php
+                        } else if (empty($_SESSION["nome_utilizador"])) {
+                        ?>
+                            <li class="itemGS">
+                                <a href="login.php">Login</a>
+                            </li>
+                        <?php
+                        }
+                        ?>
+                        <?php
+                        if (!empty($_SESSION["nome_utilizador"])) {
+                        ?>
+                            <li class="itemGS">
+                                <a href="#"><?php echo $nomedeutilizador; ?></a>
+                            </li>
+                            <li class="itemGS">
+                                <a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                            </li>
+                            <li class="itemGS">
+                                <a href="logout.php">Logout</a>
+                            </li>
+                        <?php
+                        }
+                        ?>
 
-                </ul>
-            </div>
-        </div>
-    </nav>
+                    </ul>
+                </div>
+                </div>
+        </nav>
+    </header>
 
 
 

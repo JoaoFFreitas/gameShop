@@ -17,7 +17,7 @@ a{
     color: white;
 }
 
-.header{
+.headerGS{
     display: flex;
     flex-direction: row;
     justify-content:space-evenly;
@@ -31,11 +31,17 @@ a{
     
 }
 
-.item{
+.itemGS{
     list-style-type: none;
+}
+.itemGS a{
+  color: #ffffff;
 }
 
 .gameTable{
   margin: auto;
-  
+}
+
+.carrouselGS{
+  margin: auto;
 }
