@@ -72,7 +72,7 @@ if (empty($nomedeutilizador)) {
     <br><br><br><br><br><br><br><br>
 
     <?php
-    if (empty($_SESSION["utilizador"])) {
+    if (empty($_SESSION["nome_utilizador"])) {
     ?>
         <div style="padding-top: 150px;">
             <form action="login.php" class="contactForm" method="POST">
@@ -86,25 +86,26 @@ if (empty($nomedeutilizador)) {
 
             </form>
         </div>
+    <?php } else { ?>
 
         </div>
-        <div>
-            <form action="insertGame.php" class="insertGame admin" method="post">
-                <h3 style="margin:auto;">Submeter Jogo</h3>
-                <div class="contentWrapper">
-                    <form action="portfolioData.php" method="post" enctype="multipart/form-data">
-                        <h3>Inserir imagem</h3>
-                        <label for="">Título da imagem:</label>
-                        <input type="text" name="title" id="title" placeholder="Insira um título..."> <br>
-                        <input type="file" name="ficheiro" size="35"> <br>
-                        <button type="submit" name="enviar">Submeter Ficheiro</button>
-                        <input type="hidden" name="acc" value="submeter">
-                </div>
-                <label for="">Título:</label>
-                <input type="text" name="gameName" id="gameName" placeholder="Insira o Nome do jogo">
-                <label for="">Conteúdo:</label>
-                <textarea name="newsContent" id="newsContent" cols="30" rows="10" maxlength="500" placeholder="Inserir conteúdo da notícia"></textarea>
-                <input id="button" type="submit" name="submit" value="Submeter" style="margin-top: 20px;"> <br>
+        <div class="insertGameForm">
+            <form action="insertGame.php" method="POST" enctype="multipart/form-data">
+                <h2>Inserir Jogos</h2>
+                <br>
+                <p>Inserir imagem</p>
+                <br>
+                <input type="file" name="ficheiro" size="35" style="padding-left: 140px;"> <br>
+                <br>
+                <p>Nome do jogo:</p><input type="text" name="gameName" id="gameName" placeholder="Insira o nome do jogo"> <br>
+                <p>Tipo de jogo:</p><input type="text" name="gameType" id="gameType" placeholder="Tipo de jogo"><br>
+                <p>Plataforma:</p><input type="text" name="gamePlat" id="gamePlat" placeholder="Plataforma"><br>
+                <p>Ano de lançamento:</p><input type="text" name="gameYear" id="gameYear" placeholder="Ano de lançamento"><br>
+                <p>Unidades:</p><input type="text" name="stock" id="stock" placeholder="Unidades em stock"><br>
+                <p>Preço:</p><input type="text" name="price" id="price" placeholder="Preço do jogo"><br>
+                <br>
+                <button type="submit" name="enviar">Submeter Ficheiro</button>
+                <input type="hidden" name="acc" value="submeter">
             </form>
         </div>
     <?php

@@ -101,7 +101,7 @@ if (empty($nomedeutilizador)) {
             die("Connection failed: " . $conn->connect_error);
         } else {
         };
-        $resultados = mysqli_query($conn, "SELECT imagem, gameName, genero, plataforma, price, stock, comprar, ano FROM jogos");
+        $resultados = mysqli_query($conn, "SELECT imagem, gameName, genero, plataforma, price, stock, ano FROM jogos");
 
         if ($resultados) {
             while ($jogo = mysqli_fetch_assoc($resultados)) {
@@ -114,7 +114,6 @@ if (empty($nomedeutilizador)) {
                     <td><?php echo $jogo['ano']; ?></td>
                     <td><?php echo $jogo['stock']; ?></td>
                     <td><?php echo $jogo['price']; ?></td>
-                    <td><?php echo $jogo['comprar']; ?></td>
                 </tr>
         <?php
             }

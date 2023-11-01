@@ -4,12 +4,14 @@
     --header-height: 100px;
     --body-height: 10px;
   }
+  @font-face {
+    font-family: gamerfont;
+    src: url(font/PixelGamerPersonalUse-rg61L.otf);
+  }
 *{
   box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial;
-   
 }
 
 a{
@@ -45,3 +47,15 @@ a{
 .carrouselGS{
   margin: auto;
 }
+.insertGameForm{
+  margin: auto;
+}
+.insertGameForm{
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  width: 500px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
