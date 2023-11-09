@@ -63,7 +63,8 @@ if (empty($nomedeutilizador)) {
             if (!empty($_SESSION["nome_utilizador"])) {
             ?>
               <li class="itemGS">
-                <a href="#"><?php echo $nomedeutilizador; ?></a>
+                <a href="user.php"><?php echo $nomedeutilizador;
+                                    $_SESSION["userID"] ?></a>
               </li>
               <li class="itemGS">
                 <a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a>
@@ -81,6 +82,7 @@ if (empty($nomedeutilizador)) {
     </nav>
   </header>
   <br><br><br><br><br>
+
   <div class="carrouselGS">
     <div id="carouselExampleIndicators" class="carousel slide mx-auto" data-bs-ride="carousel">
       <div class="carousel-indicators">

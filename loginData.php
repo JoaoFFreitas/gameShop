@@ -26,7 +26,7 @@ if ($resultado->num_rows == 1) {
 }
 if (password_verify($userPassword, $row["palavraChave"])) {
     session_start();
-    $_SESSION["utilizador"] = $row["id"];
+    $_SESSION["utilizador"] = $row["userID"];
     $_SESSION["nome_utilizador"] = $row["nickname"];
     $_SESSION["nivel_utilizador"] = $row["nivel"];
     header("Location: index.php");

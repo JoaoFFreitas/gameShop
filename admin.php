@@ -49,7 +49,7 @@ if (empty($nomedeutilizador)) {
                         if (!empty($_SESSION["nome_utilizador"])) {
                         ?>
                             <li class="itemGS">
-                                <a href="#"><?php echo $nomedeutilizador; ?></a>
+                                <a href="user.php"><?php echo $nomedeutilizador; ?></a>
                             </li>
                             <li class="itemGS">
                                 <a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a>
@@ -70,7 +70,7 @@ if (empty($nomedeutilizador)) {
 
 
     <br><br><br><br><br><br><br><br>
-
+    <!-- Inserir Jogos na BD -->
     <?php
     if (empty($_SESSION["nome_utilizador"])) {
     ?>
@@ -95,7 +95,7 @@ if (empty($nomedeutilizador)) {
                 <br>
                 <p>Inserir imagem</p>
                 <br>
-                <input type="file" name="ficheiro" size="35" style="padding-left: 140px;"> <br>
+                <input type="file" name="ficheiro" size="35" style="padding-left: 20px;"> <br>
                 <br>
                 <p>Nome do jogo:</p><input type="text" name="gameName" id="gameName" placeholder="Insira o nome do jogo"> <br>
                 <p>Tipo de jogo:</p><input type="text" name="gameType" id="gameType" placeholder="Tipo de jogo"><br>
@@ -112,6 +112,122 @@ if (empty($nomedeutilizador)) {
     }
     ?>
 
+    <!-- Remover jogos da BD -->
+    <form action="gameDelete.php" method="post">
+        <h3>Apagar Jogos</h3>
+        <label for="">Selecionar Jogo</label>
+        <select name="gameSelect" id="gameSelect">
+            <?php
+            $hostname = 'localhost';
+            $username = 'root';
+            $password = 'root';
+            $dbname = 'gameShop';
+
+            $conn = @mysqli_connect($hostname, $username, $password, $dbname);
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            } else {
+            };
+
+            $nome = $_POST["nome"];
+            $email = $_POST["email"];
+            $num = $_POST["telemovel"];
+            $utilizador = $_POST["user"];
+            $userPassword = $_POST["password"];
+            $passEncrypt = password_hash("$userPassword", PASSWORD_BCRYPT);
+            $id = $_SESSION["utilizador"];
+
+            $query = "SELECT gameID, gameName FROM jogos";
+            $resultado = $conn->query($query);
+
+            if ($resultado->num_rows > 0) {
+                while ($row = $resultado->fetch_assoc()) {
+                    echo "<option value='" . $row['gameID'] . "'>" . $row['gameName'] . "</option>";
+                }
+            }
+            $conn->close();
+            ?>
+        </select>
+        <input type="submit" value="Apagar Jogo">
+    </form>
+    <br><br>
+    <!-- Alterar nivel de utilizador -->
+    <form action="updateLevel.php" class="contactForm admin" method="POST">
+        <h3 style="margin:auto;">Alterar nivel de acessos</h3>
+        <label for="">Selecionar utilizador</label>
+
+        <select name="userLevel" id="userLevel">
+            <?php
+            $hostname = 'localhost';
+            $username = 'root';
+            $password = 'root';
+            $dbname = 'gameShop';
+
+            $conn = @mysqli_connect($hostname, $username, $password, $dbname);
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            } else {
+            };
+
+            $nome = $_POST["nome"];
+            $email = $_POST["email"];
+            $num = $_POST["telemovel"];
+            $utilizador = $_POST["user"];
+            $userPassword = $_POST["password"];
+            $passEncrypt = password_hash("$userPassword", PASSWORD_BCRYPT);
+            $id = $_SESSION["utilizador"];
+
+            $query = "SELECT userID, nickname FROM Utilizadores";
+            $resultado = $conn->query($query);
+
+            if ($resultado->num_rows > 0) {
+                while ($row = $resultado->fetch_assoc()) {
+                    echo "<option value='" . $row['userID'] . "'>" . $row['nickname'] . "</option>";
+                }
+            }
+            $conn->close();
+            ?>
+        </select>
+        <label for="">Selecionar Nível</label>
+        <select name="nivel" id="nivel">
+            <option value="admin">admin</option>
+            <option value="">utilizador</option>
+        </select>
+        <input id="button" type="submit" name="submit" value="Alterar Nível de acessos" style="margin-top: 20px;"> <br>
+
+        <?php
+        $hostname = 'localhost';
+        $username = 'root';
+        $password = 'root';
+        $dbname = 'gameShop';
+
+        $conn = @mysqli_connect($hostname, $username, $password, $dbname);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        } else {
+        };
+
+        session_start();
+        $nomedeutilizador = $_SESSION["nome_utilizador"];
+        if (!empty($nomedeutilizador)) {
+            $query = "SELECT * FROM Utilizadores WHERE nivel = 'admin' ";
+
+            $resultado = $conn->query($query);
+
+            if ($resultado->num_rows > 0) {
+                echo '<table class="tableOrc">';
+                echo '<tr><th>Administradores</th></tr>';
+
+                while ($row = $resultado->fetch_assoc()) {
+                    echo '<tr>';
+                    echo '<td class="tabelaOrcamento">' . $row['nickname'] . '</td>';
+                    echo '</tr>';
+                }
+                echo '</table>';
+            }
+        } ?>
+
+    </form>
 
 
 

@@ -6,12 +6,13 @@
   }
   @font-face {
     font-family: gamerfont;
-    src: url(font/PixelGamerPersonalUse-rg61L.otf);
+    src: url(font/neuropol\ x\ rg.otf);
   }
 *{
   box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: gamerfont;
 }
 
 a{
@@ -42,6 +43,13 @@ a{
 
 .gameTable{
   margin: auto;
+  text-align: center;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+.gameTable td{
+  padding: 10px;
 }
 
 .carrouselGS{

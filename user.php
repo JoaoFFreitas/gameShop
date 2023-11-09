@@ -11,12 +11,14 @@ if ($conn->connect_error) {
 };
 
 session_start();
+$id = $_SESSION["userID"];
 $nomedeutilizador = $_SESSION["nome_utilizador"];
 if (empty($nomedeutilizador)) {
     $nomedeutilizador = "Área Pessoal";
 };
 
 ?>
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -27,6 +29,7 @@ if (empty($nomedeutilizador)) {
     <meta name="author" content="João Freitas">
     <link rel="stylesheet" href="Style.css">
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>GameShop</title>
 </head>
 
@@ -78,55 +81,41 @@ if (empty($nomedeutilizador)) {
                 </div>
         </nav>
     </header>
-    <br><br><br><br><br><br><br><br><br><br>
-    <table class="gameTable">
-        <tr>
-            <th></th>
-            <th>Título</th>
-            <th>Gênero</th>
-            <th>Plataforma</th>
-            <th>Ano</th>
-            <th>Stock</th>
-            <th>Preço</th>
-        </tr>
+    <br><br><br><br><br>
+    <?php
+    if (empty($_SESSION["nome_utilizador"])) {
+    ?>
+        <div style="padding-top: 150px;">
+            <form action="login.php" class="contactForm" method="POST">
 
-        <?php
-        $hostname = 'localhost';
-        $username = 'root';
-        $password = 'root';
-        $dbname = 'gameShop';
+                Utilizador<span class="marca">*</span> <input type="text" id="lUser" name="lUser" placeholder="Nome de utilizador" required> <br>
+                Password<span class="marca">*</span> <input type="password" id="lPassword" name="lPassword" placeholder="password" required> <br>
+                <p>Se ainda não está registado registe-se <a href="register.php" Style="color: blue; text-decoration: underline;">aqui.</a></p>
+                <input id="button" type="submit" value="Login"> <br>
+                <p id="obrigatorio">(Todos os campos marcados com <span class="marca">*</span> são de preenchimento obrigatório)
+                </p>
 
-        $conn = @mysqli_connect($hostname, $username, $password, $dbname);
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        } else {
-        };
-        $resultados = mysqli_query($conn, "SELECT imagem, gameName, genero, plataforma, price, stock, ano FROM jogos");
-
-        if ($resultados) {
-            while ($jogo = mysqli_fetch_assoc($resultados)) {
-        ?>
-                <tr>
-                    <td><img src="<?php echo $jogo['imagem']; ?>" alt="Imagem do jogo" style="width: 100px;"></td>
-                    <td><?php echo $jogo['gameName']; ?></td>
-                    <td><?php echo $jogo['genero']; ?></td>
-                    <td><?php echo $jogo['plataforma']; ?></td>
-                    <td><?php echo $jogo['ano']; ?></td>
-                    <td><?php echo $jogo['stock']; ?></td>
-                    <td><?php echo $jogo['price']; ?></td>
-                    <td><button>comprar</button></td>
-                </tr>
-        <?php
-            }
-        }
-        ?>
-    </table>
-
-
-
-
-
-
+            </form>
+        </div>
+    <?php
+    } else { ?>
+        <div style="padding-top: 120px;">
+            <form action="updateUser.php" class="contactForm" method="post">
+                Nome<span class="marca">*</span> <input type="text" id="nome" name="nome" placeholder="O seu nome" required> <br>
+                NickName<span class="marca">*</span> <input type="text" id="nickname" name="nickname" placeholder="O seu NickName" required> <br>
+                Telemóvel<span class="marca">*</span> <input type="text" id="telemovel" name="telemovel" placeholder="O seu contacto" required> <br>
+                E-mail<span class="marca">*</span> <input type="email" name="email" id="email" placeholder="O seu e-mail" required> <br>
+                Morada<span class="marca">*</span> <input type="text" id="morada" name="morada" placeholder="A sua morada" required> <br>
+                Código Postal<span class="marca">*</span> <input type="text" id="postal" name="postal" placeholder="Código Postal" required> <br>
+                Cidade<span class="marca">*</span> <input type="text" id="cidade" name="cidade" placeholder="A sua cidade" required> <br>
+                País<span class="marca">*</span> <input type="text" id="pais" name="pais" placeholder="O seu país" required> <br>
+                Password<span class="marca">*</span> <input type="password" id="password" name="password" placeholder="Password" required> <br>
+                <input id="button" type="submit" value="Registar" style="margin-top: 20px;"> <br>
+            </form>
+        </div>
+    <?php
+    }
+    ?>
 
 
 

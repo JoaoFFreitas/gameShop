@@ -42,7 +42,7 @@
                         if (!empty($_SESSION["nome_utilizador"])) {
                         ?>
                             <li class="itemGS">
-                                <a href="#"><?php echo $nomedeutilizador; ?></a>
+                                <a href="user.php"><?php echo $nomedeutilizador; ?></a>
                             </li>
                             <li class="itemGS">
                                 <a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a>
