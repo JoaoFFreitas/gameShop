@@ -1,5 +1,5 @@
 :root {
-    --blue: #1e90ff;
+    --blue: #182580;
     --white: #ffffff;
     --header-height: 100px;
     --body-height: 10px;
@@ -15,9 +15,17 @@
     font-family: gamerfont;
 }
 
+body{
+  background-image: url(images/background.jpg);
+  background-repeat: repeat;
+  background-size: auto;
+}
 a{
     text-decoration: none;
     color: white;
+}
+a:hover{
+  text-decoration: underline;
 }
 
 .headerGS{
@@ -26,7 +34,7 @@ a{
     justify-content:space-evenly;
     position: fixed;
     width: 100%;
-    background-color: var(--blue);
+    background: linear-gradient(to top,#1e5ddb,var(--blue), black);
     height: var(--header-height);
     align-items: center;
     z-index: 1;
@@ -38,7 +46,7 @@ a{
     list-style-type: none;
 }
 .itemGS a{
-  color: #ffffff;
+  color: white;
 }
 
 .gameTable{
@@ -47,6 +55,7 @@ a{
   padding: 10px;
   border: 2px solid black;
   border-radius: 10px;
+  background-color: #ffffff;
 }
 .gameTable td{
   padding: 10px;
@@ -55,9 +64,7 @@ a{
 .carrouselGS{
   margin: auto;
 }
-.insertGameForm{
-  margin: auto;
-}
+
 .insertGameForm{
   margin: auto;
   padding: 20px;
@@ -67,3 +74,38 @@ a{
   border-radius: 10px;
 }
 
+.gameSelect{
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  width: 500px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+.contactFrom ,.admin{
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  width: 500px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.gameSelect{
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  width: 500px;
+  border: 2px solid black;
+  border-radius: 10px;
+  
+}
+
+.tableAdm{
+  margin: auto;
+  padding-top: 10px;
+}
+
+#admins{
+  font-weight: bold;
+}

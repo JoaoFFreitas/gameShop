@@ -111,9 +111,9 @@ if (empty($nomedeutilizador)) {
     <?php
     }
     ?>
-
+<br><br>
     <!-- Remover jogos da BD -->
-    <form action="gameDelete.php" method="post">
+    <form class="gameSelect" action="gameDelete.php" method="post">
         <h3>Apagar Jogos</h3>
         <label for="">Selecionar Jogo</label>
         <select name="gameSelect" id="gameSelect">
@@ -151,6 +151,7 @@ if (empty($nomedeutilizador)) {
         <input type="submit" value="Apagar Jogo">
     </form>
     <br><br>
+
     <!-- Alterar nivel de utilizador -->
     <form action="updateLevel.php" class="contactForm admin" method="POST">
         <h3 style="margin:auto;">Alterar nivel de acessos</h3>
@@ -215,12 +216,12 @@ if (empty($nomedeutilizador)) {
             $resultado = $conn->query($query);
 
             if ($resultado->num_rows > 0) {
-                echo '<table class="tableOrc">';
-                echo '<tr><th>Administradores</th></tr>';
+                echo '<table class="tableAdm">';
+                echo '<tr><th>Administradores:</th></tr>';
 
                 while ($row = $resultado->fetch_assoc()) {
                     echo '<tr>';
-                    echo '<td class="tabelaOrcamento">' . $row['nickname'] . '</td>';
+                    echo '<td class="admins">-' . $row['nickname'] . ';</td>';
                     echo '</tr>';
                 }
                 echo '</table>';
