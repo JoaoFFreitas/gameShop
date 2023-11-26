@@ -100,7 +100,7 @@ if (empty($nomedeutilizador)) {
     <?php
     } else { ?>
         <div style="padding-top: 120px;">
-            <form action="updateUser.php" class="contactForm" method="post">
+            <form action="updateUser.php" class="contactFormAlter" method="post">
                 Nome<span class="marca">*</span> <input type="text" id="nome" name="nome" placeholder="O seu nome" required> <br>
                 NickName<span class="marca">*</span> <input type="text" id="nickname" name="nickname" placeholder="O seu NickName" required> <br>
                 Telemóvel<span class="marca">*</span> <input type="text" id="telemovel" name="telemovel" placeholder="O seu contacto" required> <br>
@@ -110,7 +110,7 @@ if (empty($nomedeutilizador)) {
                 Cidade<span class="marca">*</span> <input type="text" id="cidade" name="cidade" placeholder="A sua cidade" required> <br>
                 País<span class="marca">*</span> <input type="text" id="pais" name="pais" placeholder="O seu país" required> <br>
                 Password<span class="marca">*</span> <input type="password" id="password" name="password" placeholder="Password" required> <br>
-                <input id="button" type="submit" value="Registar" style="margin-top: 20px;"> <br>
+                <input id="button" type="submit" value="Alterar dados" style="margin-top: 20px;"> <br>
             </form>
         </div>
     <?php

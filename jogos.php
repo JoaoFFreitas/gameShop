@@ -114,7 +114,7 @@ if (empty($nomedeutilizador)) {
                     <td><?php echo $jogo['ano']; ?></td>
                     <td><?php echo $jogo['stock']; ?></td>
                     <td><?php echo $jogo['price']; ?></td>
-                    <td><button>comprar</button></td>
+                    <td><button>Comprar</button></td>
                 </tr>
         <?php
             }

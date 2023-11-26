@@ -59,6 +59,7 @@ a:hover{
 }
 .gameTable td{
   padding: 10px;
+  background-color: #ffffff;
 }
 
 .carrouselGS{
@@ -72,6 +73,7 @@ a:hover{
   width: 500px;
   border: 2px solid black;
   border-radius: 10px;
+  background-color: lightgrey;
 }
 
 .gameSelect{
@@ -81,14 +83,35 @@ a:hover{
   width: 500px;
   border: 2px solid black;
   border-radius: 10px;
+  background-color: lightgrey;
 }
-.contactFrom ,.admin{
+.contactFrom{
   margin: auto;
   padding: 20px;
   text-align: center;
   width: 500px;
   border: 2px solid black;
   border-radius: 10px;
+  background-color: lightgrey;
+}
+
+.contactFormAlter{
+  margin: auto;
+  padding: 20px;
+  width: 500px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: lightgrey;
+}
+
+.admin{
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  width: 500px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: lightgrey;
 }
 
 .gameSelect{
@@ -98,7 +121,7 @@ a:hover{
   width: 500px;
   border: 2px solid black;
   border-radius: 10px;
-  
+  background-color: lightgrey;
 }
 
 .tableAdm{
