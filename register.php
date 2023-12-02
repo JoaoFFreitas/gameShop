@@ -66,6 +66,7 @@
 
     <form action="registerData.php" class="regForm" method="POST" style="margin-top: 150px;">
         Nome<span class="marca">*</span> <input type="text" id="nome" name="nome" placeholder="O seu nome" required> <br>
+        Idade<span class="marca">*</span> <input type="number" id="idade" name="idade" placeholder="A sua idade" required> <br>
         NickName<span class="marca">*</span> <input type="text" id="nickname" name="nickname" placeholder="O seu NickName" required> <br>
         Telemóvel<span class="marca">*</span> <input type="text" id="telemovel" name="telemovel" placeholder="O seu contacto" required> <br>
         E-mail<span class="marca">*</span> <input type="email" name="email" id="email" placeholder="O seu e-mail" required> <br>

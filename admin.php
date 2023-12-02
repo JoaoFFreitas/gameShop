@@ -129,12 +129,6 @@ if (empty($nomedeutilizador)) {
             } else {
             };
 
-            $nome = $_POST["nome"];
-            $email = $_POST["email"];
-            $num = $_POST["telemovel"];
-            $utilizador = $_POST["user"];
-            $userPassword = $_POST["password"];
-            $passEncrypt = password_hash("$userPassword", PASSWORD_BCRYPT);
             $id = $_SESSION["utilizador"];
 
             $query = "SELECT gameID, gameName FROM jogos";
@@ -151,7 +145,41 @@ if (empty($nomedeutilizador)) {
         <input type="submit" value="Apagar Jogo">
     </form>
     <br><br>
+<!-- Aterar stocks -->
+<form class="gameStockUpdate" action="gameStockUpdate.php" method="post">
+        <h3>Atualizar Stocks</h3>
+        <label for="">Selecionar Jogo</label>
+        <select name="gameSelect" id="gameSelect">
+            <?php
+            $hostname = 'localhost';
+            $username = 'root';
+            $password = 'root';
+            $dbname = 'gameShop';
 
+            $conn = @mysqli_connect($hostname, $username, $password, $dbname);
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            } else {
+            };
+
+            $id = $_SESSION["utilizador"];
+
+            $query = "SELECT gameID, gameName FROM jogos";
+            $resultado = $conn->query($query);
+
+            if ($resultado->num_rows > 0) {
+                while ($row = $resultado->fetch_assoc()) {
+                    echo "<option value='" . $row['gameID'] . "'>" . $row['gameName'] . "</option>";
+                }
+            }
+            $conn->close();
+            ?>
+        </select>
+        <input type="text" name="newStock" placeholder="Novo Stock">
+        <input type="text" name="newPrice" placeholder="Novo Preço"><br>
+        <input type="submit" value="Atualizar">
+    </form>
+    <br><br>
     <!-- Alterar nivel de utilizador -->
     <form action="updateLevel.php" class="contactForm admin" method="POST">
         <h3 style="margin:auto;">Alterar nivel de acessos</h3>
@@ -170,13 +198,6 @@ if (empty($nomedeutilizador)) {
             } else {
             };
 
-            $nome = $_POST["nome"];
-            $email = $_POST["email"];
-            $num = $_POST["telemovel"];
-            $utilizador = $_POST["user"];
-            $userPassword = $_POST["password"];
-            $passEncrypt = password_hash("$userPassword", PASSWORD_BCRYPT);
-            $id = $_SESSION["utilizador"];
 
             $query = "SELECT userID, nickname FROM Utilizadores";
             $resultado = $conn->query($query);

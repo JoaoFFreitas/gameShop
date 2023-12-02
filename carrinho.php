@@ -29,10 +29,11 @@ if (empty($nomedeutilizador)) {
   <link rel="stylesheet" href="Style.css">
   <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="script.js"></script>  
   <title>GameShop</title>
 </head>
 
-<body>
+<body onload="valorTotal()">
   <header class="sticky-top mt-50">
     <nav>
       <div">
@@ -83,7 +84,61 @@ if (empty($nomedeutilizador)) {
   </header>
   <br><br><br><br><br>
 
+  <table class="gameTable">
+        <tr>
+            <th></th>
+            <th>Título</th>
+            <th>Gênero</th>
+            <th>Plataforma</th>
+            <th>Ano</th>
+            <th>Unidades</th>
+            <th>Preço(€)</th>
+        </tr>
 
+  <?php
+        $userID = $_SESSION["utilizador"];
+        
+        $resultados = mysqli_query($conn, "SELECT * FROM carrinhos LEFT JOIN jogos ON carrinhos.jogoID = jogos.gameID WHERE userID = $userID");
+
+        if ($resultados) {
+            while ($jogo = mysqli_fetch_assoc($resultados)) {
+              $amount = $jogo["amount"];
+        ?>
+                <tr>
+                    <td><img src="<?php echo $jogo['imagem']; ?>" alt="Imagem do jogo" style="width: 100px;"></td>
+                    <td><?php echo $jogo['gameName']; ?></td>
+                    <td><?php echo $jogo['genero']; ?></td>
+                    <td><?php echo $jogo['plataforma']; ?></td>
+                    <td><?php echo $jogo['ano']; ?></td>
+                    <td class="amount"><?php echo $amount ?></td>
+                    <td class="valor"><?php echo $jogo['price']; ?></td>
+                </tr>
+        <?php
+            }
+        }
+        ?>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>Total: <span id=valorTotal></span>€(IVA incluído)</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th><form action="finalizarCompra.php" method="post">
+                      <input type="hidden" id="formTotal" name="total" value="0">
+                      <input type="submit" value="Comprar" name="comprar">
+                    </form></th>
+                </tr>
+    </table>
 
 
 

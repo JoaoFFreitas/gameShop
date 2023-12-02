@@ -11,6 +11,7 @@ if ($conn->connect_error) {
 };
 
 $nome = $_POST["nome"];
+$idade = $_POST["idade"];
 $email = $_POST["email"];
 $num = $_POST["telemovel"];
 $nickname = $_POST["nickname"];
@@ -22,7 +23,7 @@ $userPassword = $_POST["password"];
 $passEncrypt = password_hash("$userPassword", PASSWORD_BCRYPT);
 
 
-$sql = "INSERT INTO Utilizadores (nome, nickname, email, telemovel, morada, postal, palavraChave, cidade, pais) VALUES ('$nome','$nickname','$email','$num','$morada','$postal','$passEncrypt','$cidade','$pais')";
+$sql = "INSERT INTO Utilizadores (nome, idade, nickname, email, telemovel, morada, postal, palavraChave, cidade, pais) VALUES ('$nome','$idade','$nickname','$email','$num','$morada','$postal','$passEncrypt','$cidade','$pais')";
 
 if ($conn->query($sql) === true) {
     header("Location: login.php");;

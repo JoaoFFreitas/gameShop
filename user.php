@@ -102,6 +102,7 @@ if (empty($nomedeutilizador)) {
         <div style="padding-top: 120px;">
             <form action="updateUser.php" class="contactFormAlter" method="post">
                 Nome<span class="marca">*</span> <input type="text" id="nome" name="nome" placeholder="O seu nome" required> <br>
+                Idade<span class="marca">*</span> <input type="number" id="idade" name="idade" placeholder="A sua idade" required> <br>
                 NickName<span class="marca">*</span> <input type="text" id="nickname" name="nickname" placeholder="O seu NickName" required> <br>
                 Telemóvel<span class="marca">*</span> <input type="text" id="telemovel" name="telemovel" placeholder="O seu contacto" required> <br>
                 E-mail<span class="marca">*</span> <input type="email" name="email" id="email" placeholder="O seu e-mail" required> <br>
@@ -110,6 +111,7 @@ if (empty($nomedeutilizador)) {
                 Cidade<span class="marca">*</span> <input type="text" id="cidade" name="cidade" placeholder="A sua cidade" required> <br>
                 País<span class="marca">*</span> <input type="text" id="pais" name="pais" placeholder="O seu país" required> <br>
                 Password<span class="marca">*</span> <input type="password" id="password" name="password" placeholder="Password" required> <br>
+                <p id="obrigatorio">(Todos os campos marcados com <span class="marca">*</span> são de preenchimento obrigatório)</p>
                 <input id="button" type="submit" value="Alterar dados" style="margin-top: 20px;"> <br>
             </form>
         </div>

@@ -13,6 +13,7 @@ if ($conn->connect_error) {
 session_start();
 $id = $_SESSION["utilizador"];
 $nome = $_POST["nome"];
+$idade = $_POST["idade"];
 $email = $_POST["email"];
 $num = $_POST["telemovel"];
 $nickname = $_POST["nickname"];
@@ -25,6 +26,7 @@ $passEncrypt = password_hash("$userPassword", PASSWORD_BCRYPT);
 
 
 $sql = "UPDATE Utilizadores SET nome = IFNULL(NULLIF('$nome', ''),nome),
+   idade = IFNULL(NULLIF('$idade', ''),0),  
    nickname = IFNULL(NULLIF('$nickname', ''),nickname),
    telemovel = IFNULL(NULLIF('$num', ''), telemovel), 
    email = IFNULL(NULLIF('$email', ''), email),

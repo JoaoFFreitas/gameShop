@@ -86,36 +86,27 @@ if (empty($nomedeutilizador)) {
             <th>Gênero</th>
             <th>Plataforma</th>
             <th>Ano</th>
-            <th>Stock</th>
-            <th>Preço</th>
+            <th>Unidades</th>
+            <th>Preço(€)</th>
         </tr>
 
         <?php
-        $hostname = 'localhost';
-        $username = 'root';
-        $password = 'root';
-        $dbname = 'gameShop';
-
-        $conn = @mysqli_connect($hostname, $username, $password, $dbname);
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        } else {
-        };
-        $resultados = mysqli_query($conn, "SELECT imagem, gameName, genero, plataforma, price, stock, ano FROM jogos");
+        
+        $resultados = mysqli_query($conn, "SELECT gameID, imagem, gameName, genero, plataforma, price, stock, ano FROM jogos");
 
         if ($resultados) {
             while ($jogo = mysqli_fetch_assoc($resultados)) {
         ?>
-                <tr>
+                <form action="comprar.php" method="post"><tr>
                     <td><img src="<?php echo $jogo['imagem']; ?>" alt="Imagem do jogo" style="width: 100px;"></td>
                     <td><?php echo $jogo['gameName']; ?></td>
                     <td><?php echo $jogo['genero']; ?></td>
                     <td><?php echo $jogo['plataforma']; ?></td>
                     <td><?php echo $jogo['ano']; ?></td>
-                    <td><?php echo $jogo['stock']; ?></td>
+                    <td><input type="hidden" name="jogoID" value="<?php echo $jogo['gameID']; ?>"><input type="number" name="unidades" value="0" max="<?php echo $jogo["stock"];?>"></td>
                     <td><?php echo $jogo['price']; ?></td>
-                    <td><button>Comprar</button></td>
-                </tr>
+                    <td><input type="submit" name="comprar" value="Comprar"></td>
+                </tr></form>
         <?php
             }
         }

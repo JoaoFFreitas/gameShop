@@ -123,6 +123,15 @@ a:hover{
   border-radius: 10px;
   background-color: lightgrey;
 }
+.gameStockUpdate{
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  width: 500px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: lightgrey;
+}
 
 .tableAdm{
   margin: auto;
@@ -131,4 +140,8 @@ a:hover{
 
 #admins{
   font-weight: bold;
+}
+
+.marca{
+  color: red;
 }
