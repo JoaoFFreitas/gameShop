@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if ($resultado->num_rows == 1) {
     $row = $resultado->fetch_assoc();
 }
+
 if (password_verify($userPassword, $row["palavraChave"])) {
     session_start();
     $_SESSION["utilizador"] = $row["userID"];
@@ -33,6 +34,6 @@ if (password_verify($userPassword, $row["palavraChave"])) {
 
     exit();
 } else {
-    header("Location: login.php");
+    header("Location: login.php?invalidLogin");
 }
 $conn->close();

@@ -11,15 +11,12 @@ if ($conn->connect_error) {
 };
 
 session_start();
-$gameID = $_POST["jogoID"];
-$amount = $_POST["unidades"];
-$userID = $_SESSION["utilizador"];
+$estado = $_POST["estado"];
+$vendasID = $_POST["vendasID"];
 
-$sql = "INSERT INTO carrinhos (userID, jogoID, amount) VALUES ($userID, $gameID, $amount)";
+$sql = "UPDATE vendas SET estado = '$estado' WHERE vendasID = $vendasID";
 
-if ($conn->query($sql) === true) {
-    header("Location: carrinho.php");
-} else {
+if ($conn->query($sql) !== true) {
     echo "erro" . $conn->error;
 };
 $conn->close();

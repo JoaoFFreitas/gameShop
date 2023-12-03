@@ -49,7 +49,7 @@ if ($ok) {
     $sql = "DELETE FROM carrinhos WHERE userID = $userID";
 
     if ($conn->query($sql) === true) {
-        header("Location: carrinho.php");
+        header("Location: carrinho.php?checkout=success");
     } else {
         echo "erro" . $conn->error;
     };

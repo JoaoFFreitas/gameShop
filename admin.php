@@ -15,6 +15,8 @@ if (empty($nomedeutilizador)) {
     <meta name="author" content="João Freitas">
     <link rel="stylesheet" href="Style.css">
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script src="script.js"></script>
+    <link rel="icon" href="images/gameshopLogo.png">
     <title>GameShop</title>
 </head>
 
@@ -25,7 +27,7 @@ if (empty($nomedeutilizador)) {
                 <div id="navbarNavGS">
                     <ul class="headerGS">
                         <li class="itemGS">
-                            <a aria-current="page" href="index.php"><img src="images/gameshop-edit.png" alt="logo"></a>
+                            <a aria-current="page" href="index.php"><img src="images/gameshop-edit.png" alt="logo" class="headerLogo"></a>
                         </li>
                         <li class="itemGS">
                             <a href="jogos.php">Jogos</a>
@@ -69,7 +71,6 @@ if (empty($nomedeutilizador)) {
 
 
 
-    <br><br><br><br><br><br><br><br>
     <!-- Inserir Jogos na BD -->
     <?php
     if (empty($_SESSION["nome_utilizador"])) {
@@ -250,6 +251,48 @@ if (empty($nomedeutilizador)) {
         } ?>
 
     </form>
+    <div class="gameTableScroll">
+    <table class="gameTable">
+        <tr><th class="left" colspan="8">Últimas Vendas</th></tr>
+        <tr>
+            <th>ID de vendas</th>
+            <th></th>
+            <th>Título</th>
+            <th>Unidades</th>
+            <th class="hidden-on-mobile">Data</th>
+            <th>Preço(€)</th>
+            <th>Estádo</th>
+        </tr>
+
+        <?php
+        
+        $resultados = mysqli_query($conn, "SELECT * FROM vendas LEFT JOIN jogos ON jogos.gameID = vendas.jogoID LEFT JOIN Utilizadores ON Utilizadores.userID = vendas.userID ORDER BY vendasID ASC");
+
+        if ($resultados) {
+            while ($jogo = mysqli_fetch_assoc($resultados)) {
+        ?>
+                <form action="comprar.php" method="post"><tr title="<?php echo $jogo['nome'].' - '.$jogo['morada'].', '.$jogo['postal'].' '.$jogo['cidade'].', '.$jogo['pais']; ?>">
+                    <td><?php echo $jogo['vendasID']; ?></td>
+                    <td><img src="<?php echo $jogo['imagem']; ?>" alt="Imagem do jogo" style="width: 100px;"></td>
+                    <td><?php echo $jogo['gameName']; ?></td>
+                    <td><?php echo $jogo['amount']; ?></td>
+                    <td class="hidden-on-mobile"><?php echo $jogo['data']; ?></td>
+                    <td><?php echo $jogo['totalPrice']; ?></td>
+                    <td>
+                        <select onchange="estadoOnChange(event, <?php echo $jogo['vendasID']; ?>)">
+                            <option value="pending" <?php if($jogo['estado'] === 'pending') { echo 'selected="selected"'; } ?>>A processar</option>
+                            <option value="sent" <?php if($jogo['estado'] === 'sent') { echo 'selected="selected"'; } ?>>Enviado</option>
+                            <option value="cancelled" <?php if($jogo['estado'] === 'cancelled') { echo 'selected="selected"'; } ?>>Anulado</option>
+                        </select>
+                    </td>
+                    
+                </tr></form>
+        <?php
+            }
+        }
+        ?>
+    </table>
+    </div>
 
 
 

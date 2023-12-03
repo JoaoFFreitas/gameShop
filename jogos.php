@@ -11,6 +11,7 @@ if ($conn->connect_error) {
 };
 
 session_start();
+$id = $_SESSION['utilizador'];
 $nomedeutilizador = $_SESSION["nome_utilizador"];
 if (empty($nomedeutilizador)) {
     $nomedeutilizador = "Área Pessoal";
@@ -27,6 +28,7 @@ if (empty($nomedeutilizador)) {
     <meta name="author" content="João Freitas">
     <link rel="stylesheet" href="Style.css">
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <link rel="icon" href="images/gameshopLogo.png">
     <title>GameShop</title>
 </head>
 
@@ -37,7 +39,9 @@ if (empty($nomedeutilizador)) {
                 <div id="navbarNavGS">
                     <ul class="headerGS">
                         <li class="itemGS">
-                            <a aria-current="page" href="index.php"><img src="images/gameshop-edit.png" alt="logo"></a>
+                            <a aria-current="page" href="index.php">
+                                <img src="images/gameshop-edit.png" alt="logo" class="headerLogo">
+                            </a>
                         </li>
                         <li class="itemGS">
                             <a href="jogos.php">Jogos</a>
@@ -78,15 +82,20 @@ if (empty($nomedeutilizador)) {
                 </div>
         </nav>
     </header>
-    <br><br><br><br><br><br><br><br><br><br>
+    <div class="gameTableScroll">
     <table class="gameTable">
         <tr>
             <th></th>
             <th>Título</th>
-            <th>Gênero</th>
-            <th>Plataforma</th>
-            <th>Ano</th>
-            <th>Unidades</th>
+            <th class="hidden-on-mobile">Gênero</th>
+            <th class="hidden-on-mobile">Plataforma</th>
+            <th class="hidden-on-mobile">Ano</th>
+            <?php if (!empty($id)) {
+                ?>
+                <th>Unidades</th>
+                <?php
+            }
+            ?>
             <th>Preço(€)</th>
         </tr>
 
@@ -100,19 +109,41 @@ if (empty($nomedeutilizador)) {
                 <form action="comprar.php" method="post"><tr>
                     <td><img src="<?php echo $jogo['imagem']; ?>" alt="Imagem do jogo" style="width: 100px;"></td>
                     <td><?php echo $jogo['gameName']; ?></td>
-                    <td><?php echo $jogo['genero']; ?></td>
-                    <td><?php echo $jogo['plataforma']; ?></td>
-                    <td><?php echo $jogo['ano']; ?></td>
-                    <td><input type="hidden" name="jogoID" value="<?php echo $jogo['gameID']; ?>"><input type="number" name="unidades" value="0" max="<?php echo $jogo["stock"];?>"></td>
+                    <td class="hidden-on-mobile"><?php echo $jogo['genero']; ?></td>
+                    <td class="hidden-on-mobile"><?php echo $jogo['plataforma']; ?></td>
+                    <td class="hidden-on-mobile"><?php echo $jogo['ano']; ?></td>
+                    <?php
+                    if (!empty($id)) {
+                        ?>
+                            <td>
+                                <input type="hidden" name="jogoID" value="<?php echo $jogo['gameID']; ?>">
+                                <input type="number" name="unidades" value="0" size="2" max="<?php echo $jogo["stock"];?>">
+                            </td>
+                        <?php
+                    }
+                    ?>
                     <td><?php echo $jogo['price']; ?></td>
-                    <td><input type="submit" name="comprar" value="Comprar"></td>
+                    <td>
+                        <?php
+                        if (!empty($id)) {
+                            ?>
+                            <input
+                                type="submit"
+                                name="comprar"
+                                <?php echo ($jogo['stock'] <= 0 ? 'disabled="true"' : ''); ?>
+                                value="<?php if ($jogo['stock'] > 0) { echo 'Comprar'; } else { echo 'Esgotado'; } ?>"
+                            >
+                            <?php
+                        }
+                        ?>
+                    </td>
                 </tr></form>
         <?php
             }
         }
         ?>
     </table>
-
+    </div>
 
 
 

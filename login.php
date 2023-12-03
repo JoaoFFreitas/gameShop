@@ -27,17 +27,19 @@ if (empty($nomedeutilizador)) {
     <meta name="author" content="João Freitas">
     <link rel="stylesheet" href="Style.css">
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script src="script.js"></script>
+    <link rel="icon" href="images/gameshopLogo.png">
     <title>GameShop</title>
 </head>
 
-<body>
+<body onload="onInvalidLogin()">
     <header class="sticky-top mt-50">
         <nav>
             <div">
                 <div id="navbarNavGS">
                     <ul class="headerGS">
                         <li class="itemGS">
-                            <a aria-current="page" href="index.php"><img src="images/gameshop-edit.png" alt="logo"></a>
+                            <a aria-current="page" href="index.php"><img src="images/gameshop-edit.png" alt="logo" class="headerLogo"></a>
                         </li>
                         <li class="itemGS">
                             <a href="jogos.php">Jogos</a>
@@ -81,13 +83,12 @@ if (empty($nomedeutilizador)) {
 
 
 
-    <br><br><br><br><br><br><br><br>
-    <form action="loginData.php" class="contactForm" method="POST" style="margin-top: 150px;">
+    <form action="loginData.php" class="contactFrom" method="POST" style="margin-top: 150px;">
 
         Utilizador<span class="marca">*</span> <input type="text" id="lUser" name="lUser" placeholder="Nome de utilizador" required> <br>
         Password<span class="marca">*</span> <input type="password" id="lPassword" name="lPassword" placeholder="password" required> <br>
-        <p>Se ainda não está registado registe-se <a href="register.php" Style="color: blue; text-decoration: underline;">aqui.</a></p>
         <input id="button" type="submit" value="Login"> <br>
+        <p>Se ainda não está registado registe-se <a href="register.php" Style="color: blue; text-decoration: underline;">aqui.</a></p>
         <p id="obrigatorio">(Todos os campos marcados com <span class="marca">*</span> são de preenchimento obrigatório)
         </p>
 

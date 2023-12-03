@@ -28,18 +28,43 @@ a:hover{
   text-decoration: underline;
 }
 
+.headerLogo {
+  filter: brightness(1.6) contrast(5);
+}
+
 .headerGS{
     display: flex;
     flex-direction: row;
     justify-content:space-evenly;
-    position: fixed;
+    position: relative;
     width: 100%;
-    background: linear-gradient(to top,#1e5ddb,var(--blue), black);
-    height: var(--header-height);
+    background: linear-gradient(to top, transparent, #ccc);
     align-items: center;
     z-index: 1;
     color: white;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
     
+}
+.headerGS a:hover{
+  text-decoration: none;
+  color: white;
+}
+
+input[type="number"] {
+  width: 60px;
+}
+
+input[type="file"] {
+  max-width: 100%;
+}
+
+.left {
+  @media screen and (max-width: 768px) {
+    text-align: left;
+  }
 }
 
 .itemGS{
@@ -47,6 +72,11 @@ a:hover{
 }
 .itemGS a{
   color: white;
+}
+
+.gameTableScroll {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .gameTable{
@@ -62,6 +92,12 @@ a:hover{
   background-color: #ffffff;
 }
 
+.hidden-on-mobile {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
 .carrouselGS{
   margin: auto;
 }
@@ -70,7 +106,7 @@ a:hover{
   margin: auto;
   padding: 20px;
   text-align: center;
-  width: 500px;
+  max-width: 500px;
   border: 2px solid black;
   border-radius: 10px;
   background-color: lightgrey;
@@ -80,7 +116,7 @@ a:hover{
   margin: auto;
   padding: 20px;
   text-align: center;
-  width: 500px;
+  max-width: 500px;
   border: 2px solid black;
   border-radius: 10px;
   background-color: lightgrey;
@@ -89,7 +125,7 @@ a:hover{
   margin: auto;
   padding: 20px;
   text-align: center;
-  width: 500px;
+  max-width: 500px;
   border: 2px solid black;
   border-radius: 10px;
   background-color: lightgrey;
@@ -98,7 +134,7 @@ a:hover{
 .contactFormAlter{
   margin: auto;
   padding: 20px;
-  width: 500px;
+  max-width: 500px;
   border: 2px solid black;
   border-radius: 10px;
   background-color: lightgrey;
@@ -108,7 +144,7 @@ a:hover{
   margin: auto;
   padding: 20px;
   text-align: center;
-  width: 500px;
+  max-width: 500px;
   border: 2px solid black;
   border-radius: 10px;
   background-color: lightgrey;
@@ -118,7 +154,7 @@ a:hover{
   margin: auto;
   padding: 20px;
   text-align: center;
-  width: 500px;
+  max-width: 500px;
   border: 2px solid black;
   border-radius: 10px;
   background-color: lightgrey;
@@ -127,7 +163,7 @@ a:hover{
   margin: auto;
   padding: 20px;
   text-align: center;
-  width: 500px;
+  max-width: 500px;
   border: 2px solid black;
   border-radius: 10px;
   background-color: lightgrey;

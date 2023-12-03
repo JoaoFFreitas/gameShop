@@ -22,11 +22,13 @@ $postal = $_POST["postal"];
 $cidade = $_POST["cidade"];
 $pais = $_POST["pais"];
 $userPassword = $_POST["password"];
-$passEncrypt = password_hash("$userPassword", PASSWORD_BCRYPT);
+$passEncrypt = !empty($userPassword)
+    ? password_hash("$userPassword", PASSWORD_BCRYPT)
+    : '';
 
 
 $sql = "UPDATE Utilizadores SET nome = IFNULL(NULLIF('$nome', ''),nome),
-   idade = IFNULL(NULLIF('$idade', ''),0),  
+   idade = IFNULL(NULLIF('$idade', ''),idade),  
    nickname = IFNULL(NULLIF('$nickname', ''),nickname),
    telemovel = IFNULL(NULLIF('$num', ''), telemovel), 
    email = IFNULL(NULLIF('$email', ''), email),

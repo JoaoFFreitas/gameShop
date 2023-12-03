@@ -11,12 +11,15 @@ if ($conn->connect_error) {
 };
 
 session_start();
-$id = $_SESSION["userID"];
+$id = $_SESSION["utilizador"];
 $nomedeutilizador = $_SESSION["nome_utilizador"];
 if (empty($nomedeutilizador)) {
     $nomedeutilizador = "Área Pessoal";
 };
 
+$sql = "SELECT * FROM Utilizadores WHERE userID = $id";
+$query = mysqli_query($conn, $sql);
+$user = mysqli_fetch_assoc($query);
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +33,7 @@ if (empty($nomedeutilizador)) {
     <link rel="stylesheet" href="Style.css">
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="icon" href="images/gameshopLogo.png">
     <title>GameShop</title>
 </head>
 
@@ -40,7 +44,7 @@ if (empty($nomedeutilizador)) {
                 <div id="navbarNavGS">
                     <ul class="headerGS">
                         <li class="itemGS">
-                            <a aria-current="page" href="index.php"><img src="images/gameshop-edit.png" alt="logo"></a>
+                            <a aria-current="page" href="index.php"><img src="images/gameshop-edit.png" alt="logo" class="headerLogo"></a>
                         </li>
                         <li class="itemGS">
                             <a href="jogos.php">Jogos</a>
@@ -81,7 +85,6 @@ if (empty($nomedeutilizador)) {
                 </div>
         </nav>
     </header>
-    <br><br><br><br><br>
     <?php
     if (empty($_SESSION["nome_utilizador"])) {
     ?>
@@ -99,19 +102,68 @@ if (empty($nomedeutilizador)) {
         </div>
     <?php
     } else { ?>
+    
+        <table class="gameTable">
+        <tr><th colspan="8">Últimas Compras</th></tr>
+        <tr>
+            <th></th>
+            <th>Título</th>
+            <th>Unidades</th>
+            <th>Preço(€)</th>
+            <th>Data</th>
+            <th>Estádo</th>
+        </tr>
+
+        <?php
+        
+        $resultados = mysqli_query($conn, "SELECT * FROM vendas LEFT JOIN jogos ON jogos.gameID = vendas.jogoID WHERE userID = $id");
+
+        if ($resultados) {
+            while ($jogo = mysqli_fetch_assoc($resultados)) {
+        ?>
+                <form action="comprar.php" method="post"><tr>
+                    <td><img src="<?php echo $jogo['imagem']; ?>" alt="Imagem do jogo" style="width: 100px;"></td>
+                    <td><?php echo $jogo['gameName']; ?></td>
+                    <td><?php echo $jogo['amount']; ?></td>
+                    <td><?php echo $jogo['totalPrice']; ?></td>
+                    <td><?php echo $jogo['data']; ?></td>
+                    <td>
+                        <?php
+                        switch ($jogo['estado']) {
+                            case 'sent':
+                                echo 'enviado';
+                                break;
+                            case 'cancelled':
+                                echo 'anulado';
+                                break;
+                            default:
+                                echo 'pendente';
+                                break;
+                        }
+                        ?>
+                    </td>
+                    
+                </tr></form>
+        <?php
+            }
+        }
+        ?>
+    </table>
+
+
         <div style="padding-top: 120px;">
             <form action="updateUser.php" class="contactFormAlter" method="post">
-                Nome<span class="marca">*</span> <input type="text" id="nome" name="nome" placeholder="O seu nome" required> <br>
-                Idade<span class="marca">*</span> <input type="number" id="idade" name="idade" placeholder="A sua idade" required> <br>
-                NickName<span class="marca">*</span> <input type="text" id="nickname" name="nickname" placeholder="O seu NickName" required> <br>
-                Telemóvel<span class="marca">*</span> <input type="text" id="telemovel" name="telemovel" placeholder="O seu contacto" required> <br>
-                E-mail<span class="marca">*</span> <input type="email" name="email" id="email" placeholder="O seu e-mail" required> <br>
-                Morada<span class="marca">*</span> <input type="text" id="morada" name="morada" placeholder="A sua morada" required> <br>
-                Código Postal<span class="marca">*</span> <input type="text" id="postal" name="postal" placeholder="Código Postal" required> <br>
-                Cidade<span class="marca">*</span> <input type="text" id="cidade" name="cidade" placeholder="A sua cidade" required> <br>
-                País<span class="marca">*</span> <input type="text" id="pais" name="pais" placeholder="O seu país" required> <br>
-                Password<span class="marca">*</span> <input type="password" id="password" name="password" placeholder="Password" required> <br>
-                <p id="obrigatorio">(Todos os campos marcados com <span class="marca">*</span> são de preenchimento obrigatório)</p>
+                Nome<input type="text" id="nome" name="nome" placeholder="O seu nome"> <br>
+                Idade<input type="number" id="idade" name="idade"  > <br>
+                NickName<input type="text" id="nickname" name="nickname" placeholder="O seu NickName" > <br>
+                Telemóvel<input type="text" id="telemovel" name="telemovel" placeholder="O seu contacto" > <br>
+                E-mail<input type="email" name="email" id="email" placeholder="O seu e-mail" > <br>
+                Morada<input type="text" id="morada" name="morada" placeholder="A sua morada" > <br>
+                Código Postal<input type="text" id="postal" name="postal" placeholder="Código Postal" > <br>
+                Cidade<input type="text" id="cidade" name="cidade" placeholder="A sua cidade" > <br>
+                País<input type="text" id="pais" name="pais" placeholder="O seu país" > <br>
+                Password<input type="password" id="password" name="password" placeholder="Password" > <br>
+                <p id="obrigatorio">(Insira só os dados que pretende alterar)</p>
                 <input id="button" type="submit" value="Alterar dados" style="margin-top: 20px;"> <br>
             </form>
         </div>
