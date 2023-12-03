@@ -20,6 +20,7 @@ body{
   background-repeat: repeat;
   background-size: auto;
 }
+
 a{
     text-decoration: none;
     color: white;
@@ -77,6 +78,7 @@ input[type="file"] {
 .gameTableScroll {
   max-width: 100%;
   overflow-x: auto;
+  margin-top: 20px;
 }
 
 .gameTable{
