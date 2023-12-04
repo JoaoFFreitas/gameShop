@@ -122,7 +122,7 @@ if (empty($nomedeutilizador)) {
                         <?php
                     }
                     ?>
-                    <td><?php echo $jogo['price']; ?></td>
+                    <td><?php echo $jogo['price']; ?>€</td>
                     <td>
                         <?php
                         if (!empty($id)) {
