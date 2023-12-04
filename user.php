@@ -38,7 +38,7 @@ $user = mysqli_fetch_assoc($query);
 </head>
 
 <body>
-    <header class="sticky-top mt-50">
+    <header class="mt-50">
         <nav>
             <div">
                 <div id="navbarNavGS">
@@ -53,7 +53,7 @@ $user = mysqli_fetch_assoc($query);
                         if ($_SESSION["nivel_utilizador"] === "admin") {
                         ?>
                             <li class="itemGS">
-                                <a href="admin.php">Administrador</a>
+                                <a href="admin.php">Gestão</a>
                             </li>
                         <?php
                         } else if (empty($_SESSION["nome_utilizador"])) {
@@ -151,10 +151,10 @@ $user = mysqli_fetch_assoc($query);
     </table>
 
 
-        <div style="padding-top: 120px;">
+        <div style="padding-top: 20px;">
             <form action="updateUser.php" class="contactFormAlter" method="post">
                 Nome<input type="text" id="nome" name="nome" placeholder="O seu nome"> <br>
-                Idade<input type="number" id="idade" name="idade"  > <br>
+                Idade<input type="number" id="idade" name="idade" min="18" > <br>
                 NickName<input type="text" id="nickname" name="nickname" placeholder="O seu NickName" > <br>
                 Telemóvel<input type="text" id="telemovel" name="telemovel" placeholder="O seu contacto" > <br>
                 E-mail<input type="email" name="email" id="email" placeholder="O seu e-mail" > <br>

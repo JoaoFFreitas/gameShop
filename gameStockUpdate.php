@@ -16,7 +16,9 @@ $stock = $_POST["newStock"];
 $price = $_POST["newPrice"];
 $jogo = $_POST["gameSelect"];
 
-$sql = "UPDATE jogos SET stock = '$stock', price = '$price' WHERE gameid = '$jogo'";
+
+$sql = "UPDATE jogos SET stock = IFNULL(NULLIF('$stock', ''),stock),
+ price = IFNULL(NULLIF('$price', ''),price) WHERE gameID = '$jogo'";
 
 if ($conn->query($sql) === true) {
     header("Location: admin.php");

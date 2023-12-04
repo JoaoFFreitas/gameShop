@@ -80,18 +80,20 @@ input[type="file"] {
   overflow-x: auto;
   margin-top: 20px;
 }
-
+.finalPrice{
+  padding-bottom: 10px;
+}
 .gameTable{
   margin: auto;
   text-align: center;
   padding: 10px;
   border: 2px solid black;
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: lightgray;
 }
 .gameTable td{
   padding: 10px;
-  background-color: #ffffff;
+  background-color: lightgray;
 }
 
 .hidden-on-mobile {
@@ -169,6 +171,10 @@ input[type="file"] {
   border: 2px solid black;
   border-radius: 10px;
   background-color: lightgrey;
+}
+.sendAdd{
+text-align: left;
+
 }
 
 .tableAdm{

@@ -36,7 +36,7 @@ if (empty($nomedeutilizador)) {
                         if ($_SESSION["nivel_utilizador"] === "admin") {
                         ?>
                             <li class="itemGS">
-                                <a href="admin.php">Administrador</a>
+                                <a href="admin.php">Gestão</a>
                             </li>
                         <?php
                         } else if (empty($_SESSION["nome_utilizador"])) {
@@ -146,7 +146,7 @@ if (empty($nomedeutilizador)) {
         <input type="submit" value="Apagar Jogo">
     </form>
     <br><br>
-<!-- Aterar stocks -->
+<!-- Aterar stocks e preços -->
 <form class="gameStockUpdate" action="gameStockUpdate.php" method="post">
         <h3>Atualizar Stocks</h3>
         <label for="">Selecionar Jogo</label>
@@ -251,6 +251,8 @@ if (empty($nomedeutilizador)) {
         } ?>
 
     </form>
+
+    <!-- Visualização de vendas -->
     <div class="gameTableScroll">
     <table class="gameTable">
         <tr><th class="left" colspan="8">Últimas Vendas</th></tr>

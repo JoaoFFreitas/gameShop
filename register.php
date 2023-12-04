@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <header class="sticky-top mt-50">
+    <header class="mt-50">
         <nav>
             <div">
                 <div id="navbarNavGS">
@@ -28,7 +28,7 @@
                         if ($_SESSION["nivel_utilizador"] === "admin") {
                         ?>
                             <li class="itemGS">
-                                <a href="admin.php">Administrador</a>
+                                <a href="admin.php">Gestão</a>
                             </li>
                         <?php
                         } else if (empty($_SESSION["nome_utilizador"])) {
@@ -64,9 +64,9 @@
 
 
 
-    <form action="registerData.php" class="regForm" method="POST" style="margin-top: 150px;">
+    <form action="registerData.php" class="contactFrom" method="POST" style="margin-top: 150px;">
         Nome<span class="marca">*</span> <input type="text" id="nome" name="nome" placeholder="O seu nome" required> <br>
-        Idade<span class="marca">*</span> <input type="number" id="idade" name="idade" placeholder="A sua idade" required min="18"> <br>
+        Idade<span class="marca">*</span> <input type="number" id="idade" name="idade" required min="18"> <br>
         NickName<span class="marca">*</span> <input type="text" id="nickname" name="nickname" placeholder="O seu NickName" required> <br>
         Telemóvel<span class="marca">*</span> <input type="phone" id="telemovel" name="telemovel" placeholder="O seu contacto" required> <br>
         E-mail<span class="marca">*</span> <input type="email" name="email" id="email" placeholder="O seu e-mail" required> <br>

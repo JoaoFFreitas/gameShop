@@ -33,7 +33,7 @@ if (empty($nomedeutilizador)) {
 </head>
 
 <body onload="onInvalidLogin()">
-    <header class="sticky-top mt-50">
+    <header class="mt-50">
         <nav>
             <div">
                 <div id="navbarNavGS">
@@ -48,7 +48,7 @@ if (empty($nomedeutilizador)) {
                         if ($_SESSION["nivel_utilizador"] === "admin") {
                         ?>
                             <li class="itemGS">
-                                <a href="admin.php">Administrador</a>
+                                <a href="admin.php">Gestão</a>
                             </li>
                         <?php
                         } else if (empty($_SESSION["nome_utilizador"])) {

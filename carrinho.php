@@ -35,7 +35,7 @@ if (empty($nomedeutilizador)) {
 </head>
 
 <body onload="valorTotal(); onCheckoutSuccess();">
-  <header class="sticky-top mt-50">
+  <header class="mt-50">
     <nav>
       <div">
         <div id="navbarNavGS">
@@ -50,7 +50,7 @@ if (empty($nomedeutilizador)) {
             if ($_SESSION["nivel_utilizador"] === "admin") {
             ?>
               <li class="itemGS">
-                <a href="admin.php">Administrador</a>
+                <a href="admin.php">Gestão</a>
               </li>
             <?php
             } else if (empty($_SESSION["nome_utilizador"])) {
@@ -132,6 +132,63 @@ if (empty($nomedeutilizador)) {
                     <th></th>
                     <th>Total: <span id=valorTotal></span>€(IVA incluído)</th>
                 </tr>
+                <?php
+                if ($resultados && mysqli_num_rows($resultados) > 0) {
+                  $resMorada = mysqli_query($conn, "SELECT * FROM Utilizadores WHERE userID = $userID");
+
+                  while  ($morada = mysqli_fetch_assoc($resMorada)) {
+              
+        ?>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>Morada para envio:</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th class="sendAdd"><?php echo $morada['morada']; ?></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th class="sendAdd"><?php echo $morada['postal']; ?></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th class="sendAdd"><?php echo $morada['cidade']; ?></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th class="sendAdd"><?php echo $morada['pais']; ?></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+        <?php
+            }
+        
+        ?>
+               
                 <tr>
                     <th></th>
                     <th></th>
@@ -139,11 +196,20 @@ if (empty($nomedeutilizador)) {
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th><form action="finalizarCompra.php" method="post">
+                    <th>
+                    <form action="limparCompra.php" method="post" class="finalPrice">
+                     
+                      <input type="submit" value="Limpar" name="limpar">
+                    </form>
+                      <form action="finalizarCompra.php" method="post" class="finalPrice">
                       <input type="hidden" id="formTotal" name="total" value="0">
                       <input type="submit" value="Comprar" name="comprar">
                     </form></th>
-                </tr>
+
+                </tr><?php
+            }
+        
+        ?> 
     </table>
       </div>
 
