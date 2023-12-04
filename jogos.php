@@ -117,7 +117,7 @@ if (empty($nomedeutilizador)) {
                         ?>
                             <td>
                                 <input type="hidden" name="jogoID" value="<?php echo $jogo['gameID']; ?>">
-                                <input type="number" name="unidades" value="0" size="2" max="<?php echo $jogo["stock"];?>">
+                                <input type="number" name="unidades" value="1" size="2" max="<?php echo $jogo["stock"];?>">
                             </td>
                         <?php
                     }
