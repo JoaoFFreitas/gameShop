@@ -25,6 +25,7 @@ if (empty($nomedeutilizador)) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="games for sale for ps5">
+  <meta name="keywords" content="jogos de playstation 5, jogos de ação, jogos de aventura, jogos de corrida, jogos de luta, jogos de estratégia, jogos de RPG">
   <meta name="author" content="João Freitas">
   <link rel="stylesheet" href="Style.css">
   <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
