@@ -43,7 +43,6 @@ a:hover{
     align-items: center;
     z-index: 1;
     color: white;
-
     @media screen and (max-width: 768px) {
       flex-direction: column;
     }
